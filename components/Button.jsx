@@ -20,6 +20,17 @@ export   const  ButtonStyle = css`
      `};
 
 
+     ${props => props.black && props.outline && css`
+        background-color: transparent;
+        color:#000000;
+        border:1px solid #fff;
+     `};
+     ${props => props.black && !props.outline && css`
+        background-color: #000000;
+        color:#fff;
+     `};
+
+
      ${props => props.white && props.outline && css`
         background-color: transparent;
         color:#fff;
@@ -46,6 +57,12 @@ export   const  ButtonStyle = css`
             height: 36px;
            }
      `};
+
+     ${props=>props.block && css`
+       display: block;
+       width:100%;
+       padding:10px;
+     `}
 `
 
 const StyledButton = styled.button`

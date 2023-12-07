@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Center from './Center'
 import styled from 'styled-components'
 import Button from './Button'
 import { useRouter } from 'next/router'
 import ButtonLink from './ButtonLink'
 import CartIcon from '../icons/CartIcon'
+import { CartContext } from './CartContext'
 
 const Bg = styled.div`
     background-color: #222;
@@ -47,8 +48,11 @@ const ButtonsWrapper = styled.div`
 
 function Feature({product}) {
 
-
-    const router = useRouter()
+    const {addProduct} = useContext(CartContext)
+    
+    const addFeaturedToCart =()=>{
+        addProduct(product._id)
+    }
   return (
     <Bg>
         <Center>
@@ -59,7 +63,7 @@ function Feature({product}) {
              <Dec>{product.description}</Dec>
              <ButtonsWrapper>
              <ButtonLink href={'/products/'+product._id} white={1} outline={1}>Read more</ButtonLink>
-             <Button  primary white>
+             <Button  primary white onClick={addFeaturedToCart} >
              <CartIcon />
              Add to cart</Button>
              </ButtonsWrapper>
