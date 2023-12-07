@@ -27,11 +27,18 @@ export   const  ButtonStyle = css`
      `};
 
   
-     ${props=> props.primary && css`
+     ${props=> props.primary && !props.outline &&css`
      background-color:#5542F6;
      color:#fff; 
      border:1px solid #5542F6; 
      `};
+
+     ${props=> props.primary && props.outline &&css`
+     background-color:transparent;
+     color:#0c6e3d; 
+     border:1px solid #0c6e3d;
+     `};
+
      ${props=> props.size==='l'  && css`
           font-size:1.2rem;
           padding:10px 20px
