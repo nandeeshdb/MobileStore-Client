@@ -6,6 +6,7 @@ import { CartContext } from '../../components/CartContext'
 import axios from 'axios'
 import Table from '../../components/Table'
 import Input from '../../components/Input'
+import Center from '../../components/Center'
 
 const ColumnWrapper = styled.div`
    display: grid;
@@ -56,6 +57,7 @@ function cart() {
   const[city,setCity] = useState('')
   const[country,setCountry] = useState('')
   const[pincode,setPincode] = useState('')
+  const[isSuccess,setIsSuccess] = useState(false)
 
   useEffect(()=>{
 
@@ -85,6 +87,40 @@ function cart() {
     total += price;
   }
 
+  const goToPayments = () =>{
+    axios.post('/api/checkout',{ name,email,city,pincode,address,country,
+      cartProduct,
+    }).then(response=>{
+      if(response.data.url){
+        window.location = response.data.url;
+      }
+    })
+
+  }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+    if (window?.location.href.includes('success')) {
+      setIsSuccess(true);
+      
+    }
+  }, []);
+
+  if(isSuccess){
+    return (
+      <>
+      <Header/>
+      <Center>
+        <Box>
+          <h1>Thanks for your order!</h1>
+          <p>We will email you when your order is out for delivery</p>
+        </Box>
+      </Center>
+      </>
+    )
+  }
   return (
     <>
         <Header />
@@ -145,7 +181,7 @@ function cart() {
 
         <Box>
             <h2>Order Information</h2>
-            <form method="post" onSubmit={'/api/checkout'}>
+            
             <Input type='text' placeholder='Name' value={name} onChange={(e)=>setName(e.target.value)} name="name"/>
             <Input type='text' placeholder='Email' value={email} onChange={(e)=>setEmail(e.target.value)} name="email"/>
             <Input type='text' placeholder='Address' value={address} onChange={(e)=>setAddress(e.target.value)} name="address"/>
@@ -153,8 +189,8 @@ function cart() {
             <Input type='text' placeholder='Pincode' value={pincode} onChange={(e)=>setPincode(e.target.value)} name="pincode"/>
             <Input type='text' placeholder='Country' value={country} onChange={(e)=>setCountry(e.target.value)} name="country"/>
             <input type="hidden" value={cartProduct.join(',')} name='products'/>
-            <Button block black>Check Out</Button>
-            </form>
+            <Button block black onClick={goToPayments}>Check Out</Button>
+            
         </Box>
         </ColumnWrapper>
 
