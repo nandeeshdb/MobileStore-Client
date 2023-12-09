@@ -1,14 +1,7 @@
-import React from 'react'
 import styled from 'styled-components'
 import Center from './Center'
-import ProductBox from './ProductBox'
+import ProductGrid from './ProductGrid'
 
-const ProductsGrid = styled.div`
-  
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 30px;
-`
 
 const Title = styled.h1`
   font-size:1.5rem;
@@ -21,13 +14,8 @@ function NewProducts({products}) {
     <Center>
       <Title>New Arrivals</Title>
       
-    <ProductsGrid>
-      {
-        products?.length > 0 && products.map(product=>(
-          <div><ProductBox {...product} /></div>
-        ))
-      }
-    </ProductsGrid>
+    <ProductGrid products={products} />
+      
     </Center>
   )
 }

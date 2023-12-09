@@ -40,7 +40,7 @@ function Header() {
         <Logo href={'/'}>MobileStore</Logo>
         <StyledNav>
             <NavLink href={'/home'}>Home</NavLink>
-            <NavLink href={'/product'}>Product</NavLink>
+            <NavLink href={'/products'}>All Products</NavLink>
             <NavLink href={'/categories'}>Categories</NavLink>
             <NavLink href={'/account'}>Account</NavLink>
             <NavLink href={'/cart'}>Cart({cartProduct.length})</NavLink>
