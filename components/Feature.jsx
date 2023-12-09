@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import Button from './Button'
 import { useRouter } from 'next/router'
 import ButtonLink from './ButtonLink'
-import CartIcon from '../icons/CartIcon'
+import CartIcon from '../CartIcon'
 import { CartContext } from './CartContext'
 
 const Bg = styled.div`

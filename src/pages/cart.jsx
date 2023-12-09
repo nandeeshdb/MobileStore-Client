@@ -49,7 +49,7 @@ const QuantityLabels = styled.span`
 `
 
 function cart() {
-  const {cartProduct,addProduct,removeProduct} =useContext(CartContext);
+  const {cartProduct,addProduct,removeProduct,clearCart} =useContext(CartContext);
   const [product,setProduct] =useState([]);
   const[name,setName] = useState('')
   const[email,setEmail] = useState('')
@@ -103,7 +103,9 @@ function cart() {
       return;
     }
     if (window?.location.href.includes('success')) {
+      clearCart()
       setIsSuccess(true);
+      
       
     }
   }, []);
@@ -121,6 +123,8 @@ function cart() {
       </>
     )
   }
+
+ 
   return (
     <>
         <Header />
