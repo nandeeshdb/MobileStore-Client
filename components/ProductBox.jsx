@@ -49,13 +49,13 @@ function ProductBox({_id,title,images,price}) {
   return (
     <ProductWrapper>
         
-    <WhiteBox href={`/products/${_id}`}>
+    <WhiteBox href={'/product/'+_id}>
         <div>
         <img src={images[0]}/>
         </div>
     </WhiteBox>
     <ProductInfo>
-        <Title href={`/products/${_id}`}>
+        <Title href={'/product/'+_id}>
           {title}
         </Title>
         <PirceInfoRow>
