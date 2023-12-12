@@ -10,7 +10,11 @@ import Center from '../../components/Center'
 
 const ColumnWrapper = styled.div`
    display: grid;
-   grid-template-columns: 1.1fr .9fr;
+   grid-template-columns: 1fr;
+   @media screen and (min-width:768px){
+    grid-template-columns: 1.1fr .9fr;
+
+   }
    gap:40px;
    margin-top: 40px;
 `
@@ -46,6 +50,11 @@ const ProductImageBox= styled.div`
 
 const QuantityLabels = styled.span`
   padding:0 3px;
+`
+
+const TotalRow = styled.tr`
+    margin: 20px;
+    font-size: 1.3rem;
 `
 
 function cart() {
@@ -162,17 +171,17 @@ function cart() {
                       </QuantityLabels>
                       <Button onClick={()=>addMoreProduct(product._id)}>+</Button>
                       </td>
-                    <td>{(cartProduct.filter(id=> id===product._id).length)*product.price}</td>
+                    <td>{(cartProduct.filter(id=> id===product._id).length)*product.price}Rs</td>
 
                     </tr>
     
                 ))
               }
-              <tr>
+              <TotalRow>
+                <td>Total</td>
                 <td></td>
-                <td></td>
-                <td>{total}</td>
-              </tr>
+                <td>{total} Rs</td>
+              </TotalRow>
               
          
             </tbody>

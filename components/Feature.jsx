@@ -16,7 +16,10 @@ const Bg = styled.div`
 const Title = styled.h1`
     margin:0;
     font-weight: normal;
-    font-size: 3rem;
+    font-size: 2rem;
+    @media screen and (min-width:768px){
+        font-size: 3rem;
+    }
 
 `
 
@@ -27,13 +30,28 @@ const Dec = styled.p`
 
 const ColumnsWrapper = styled.div`
     display:grid;
-    grid-template-columns: 1.1fr .9fr;
-    gap:40px
+    grid-template-columns: 1fr;
+    gap:40px;
+    justify-items: center;
+    img{
+        max-width: 100%;
+        max-height:200px
+    };
+    div:nth-child(1){
+        order:2;
+    };
+    @media screen and (min-width:768px){
+        grid-template-columns: 1.1fr .9fr;
+        div:nth-child(1){
+        order:0;
+    }
+    }
    
-`
+`;
 
 const StyledImage = styled.img`
     max-width: 100%;
+    
 `
 const Column = styled.div`
     display:flex;
@@ -62,7 +80,7 @@ function Feature({product}) {
             <Title>{product.title}</Title>
              <Dec>{product.description}</Dec>
              <ButtonsWrapper>
-             <ButtonLink href={'/products/'+product._id} white={1} outline={1}>Read more</ButtonLink>
+             <ButtonLink href={'/product/'+product._id} white={1} outline={1}>Read more</ButtonLink>
              <Button  primary white onClick={addFeaturedToCart} >
              <CartIcon />
              Add to cart</Button>
@@ -71,7 +89,7 @@ function Feature({product}) {
             </Column>
 
             <Column>
-                <StyledImage src='https://mobilemart.s3.ap-south-1.amazonaws.com/1701763398923.png'
+                <StyledImage src='https://mobilemart.s3.amazonaws.com/1702278182686.png'
                 alt="no"/>
             </Column>
         </ColumnsWrapper>
@@ -81,7 +99,7 @@ function Feature({product}) {
 }
 
 
-export default Feature
+export default Feature 
 
 
 

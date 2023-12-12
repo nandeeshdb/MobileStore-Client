@@ -59,7 +59,7 @@ function ProductBox({_id,title,images,price}) {
           {title}
         </Title>
         <PirceInfoRow>
-           <Price> {price}$</Price>
+           <Price> {price}Rs</Price>
 
         <Button primary outline onClick={()=>addProduct(_id)}>Add to cart</Button>
         </PirceInfoRow>
